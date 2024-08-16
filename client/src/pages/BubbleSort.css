@@ -1,0 +1,33 @@
+.bubble-sort-container {
+    text-align:center;
+    padding: 20px;
+}
+
+.array-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 20px 0;
+}
+
+.array-bar {
+    background-color: #3498db;
+    width: 30px;
+    margin: 0 2px;
+    transition: height 0.5s ease;
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed
+}
