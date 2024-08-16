@@ -6,6 +6,8 @@ function BubbleSort() {
     const [isSorting, setIsSorting] = useState(false);
     const [steps, setSteps] = useState([]);
     const [currentStep, setCurrentStep] = useState(0);
+    const [optimized, setOptimized] = useState(false);
+    const [descencding, setDescending] = useState(false);
 
     useEffect(() => {
         generateRandomArray();
@@ -21,14 +23,21 @@ function BubbleSort() {
     const bubbleSort = () => {
         let arr = [...array];
         let steps = [];
+        let swapped;
+
         for (let i = 0; i < arr.length; i++) {
+            swapped = false;
             for (let j = 0; j < arr.length - i - 1; j++) {
-                if (arr[j] > arr[j+1]) {
+                if ((!descencding && arr[j] > arr[j+1]) || (descencding && arr[j] < arr[j+1])) {
                     [arr[j], arr[j+1]] = [arr[j+1], arr[j]];
                     steps.push([...arr]);
+                    swapped = true;
                 }
             }
+
+            if (optimized && !swapped) break;
         }
+
         setSteps(steps);
         setIsSorting(true);
     };
@@ -54,12 +63,20 @@ function BubbleSort() {
                     <div className="array-bar" key={index} style={{ height: `${value}px`}}></div>
                 ))}
             </div>
-            <button onClick={generateRandomArray} disable={isSorting}>
+            <button onClick={generateRandomArray} disabled={isSorting}>
                 Generate New Array
             </button>
-            <button onClick={bubbleSort} disable={isSorting}>
+            <button onClick={bubbleSort} disabled={isSorting}>
                 Start Bubble Sort
             </button>
+            <label>
+                <input type="checkbox" checked={optimized} onChange={() => setOptimized(!optimized)} disabled={isSorting}/>
+                Enable Optimized Bubble Sort
+            </label>
+            <label>
+                <input type="checkbox" checked={descencding} onChange={() => setDescending(!descencding)} disabled={isSorting}/>
+                Sort from Greatest to Least
+            </label>
         </div>
     )
 }
