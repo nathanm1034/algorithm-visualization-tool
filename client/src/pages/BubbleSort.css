@@ -1,33 +1,135 @@
-.bubble-sort-container {
-    text-align:center;
-    padding: 20px;
+/* Reset some basic styles */
+body, h2, p, div, button, select, label, input {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+/* Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Container for the entire visualization */
+.bubble-sort-container {
+    max-width: 800px;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+}
+
+/* Title Styling */
+.bubble-sort-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #2c3e50;
+}
+
+/* Array container styling */
 .array-container {
     display: flex;
     justify-content: center;
     align-items: flex-end;
     margin: 20px 0;
+    height: 300px;
+    border: 2px solid #bdc3c7;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #ecf0f1;
 }
 
+/* Array bar wrapper styling */
+.array-bar-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    cursor: grab;
+    height: 100%;
+    position: relative;
+    transition: transform 0.5s ease;
+}
+
+.array-bar-wrapper:active {
+    cursor: grabbing;
+}
+
+/* Adjust array bar styling */
 .array-bar {
+    width: 80%; /* Adjust width to fit within the wrapper */
     background-color: #3498db;
-    width: 30px;
-    margin: 0 2px;
-    transition: height 0.5s ease;
+    border-radius: 4px;
+    transition: height 0.5s ease, background-color 0.5s ease;
 }
 
+/* Controls Styling */
+label {
+    display: block;
+    margin: 15px 0;
+    font-size: 16px;
+}
+
+input[type="checkbox"] {
+    margin-right: 8px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+/* Select Dropdown Styling */
+select {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Button Styling */
 button {
-    margin: 10px;
+    margin: 15px 10px;
     padding: 10px 20px;
-    background-color: #2ecc71;
+    background-color: #27ae60;
     color: white;
     border: none;
     border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2ecc71;
 }
 
 button:disabled {
     background-color: #95a5a6;
-    cursor: not-allowed
+    cursor: not-allowed;
+}
+
+/* Responsive Design for smaller screens */
+@media (max-width: 600px) {
+    .array-container {
+        margin: 10px 0;
+        height: 200px;
+    }
+
+    .array-bar {
+        margin: 0 2px;
+    }
+
+    button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
 }
